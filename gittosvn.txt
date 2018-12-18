@@ -1,0 +1,22 @@
+================================
+Take the Authors of the Project:
+================================
+
+$ svn log -q | awk -F '|' '/^r/ {sub("^ ", "", $2); sub(" $", "", $2); print $2" = "$2" <"$2">"}' | sort -u > authors.txt
+
+Change the Namining Convention of SVN to GIT.
+
+=================================================================================================
+Clone the Project Sources from Remote Repo with appending the authors file to the History of svn.
+=================================================================================================
+
+$ git svn clone --no-metadata -A authors.txt http://192.168.1.1/svn/Appzillon/4.0.0.S1
+
+=====================================================================
+Clone with complete History which includes branches and sub-branches.
+=====================================================================
+
+$ git svn clone --no-metadata -A auth.txt http://192.168.1.1/svn/ -T Appzillon/4.0.0.S1
+
+
+
